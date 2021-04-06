@@ -1,118 +1,112 @@
-# Hyde
+## Jasper2
 
-Hyde is a brazen two-column [Jekyll](http://jekyllrb.com) theme that pairs a prominent sidebar with uncomplicated content. It's based on [Poole](http://getpoole.com), the Jekyll butler.
+[![Build Status](https://travis-ci.org/jekyller/jasper2.svg?branch=master)](https://travis-ci.org/jekyller/jasper2)
+[![Ruby](https://img.shields.io/badge/ruby-2.5.1-blue.svg?style=flat)](http://travis-ci.org/jekyller/jasper2)
+[![Jekyll](https://img.shields.io/badge/jekyll-3.7.4-blue.svg?style=flat)](http://travis-ci.org/jekyller/jasper2)
 
-![Hyde screenshot](https://f.cloud.github.com/assets/98681/1831228/42af6c6a-7384-11e3-98fb-e0b923ee0468.png)
+This is a full-featured port of Ghost's default theme [Casper](https://github.com/tryghost/casper)
+*v2.1.9* for [Jekyll](https://jekyllrb.com/) / [GitHub Pages](https://pages.github.com/).
 
+## Live Demo
 
-## Contents
+[Ghost's Casper](https://demo.ghost.io) // [Jasper2](https://jekyller.github.io/jasper2)
 
-- [Usage](#usage)
-- [Options](#options)
-  - [Sidebar menu](#sidebar-menu)
-  - [Sticky sidebar content](#sticky-sidebar-content)
-  - [Themes](#themes)
-  - [Reverse layout](#reverse-layout)
-- [Development](#development)
-- [Author](#author)
-- [License](#license)
+![home page](https://raw.githubusercontent.com/jekyller/jasper2/master/assets/screenshot-desktop.jpg)
 
 
-## Usage
+## Features
 
-Hyde is a theme built on top of [Poole](https://github.com/poole/poole), which provides a fully furnished Jekyll setup—just download and start the Jekyll server. See [the Poole usage guidelines](https://github.com/poole/poole#usage) for how to install and use Jekyll.
-
-
-## Options
-
-Hyde includes some customizable options, typically applied via classes on the `<body>` element.
-
-
-### Sidebar menu
-
-Create a list of nav links in the sidebar by assigning each Jekyll page the correct layout in the page's [front-matter](http://jekyllrb.com/docs/frontmatter/).
-
-```
----
-layout: page
-title: About
----
-```
-
-**Why require a specific layout?** Jekyll will return *all* pages, including the `atom.xml`, and with an alphabetical sort order. To ensure the first link is *Home*, we exclude the `index.html` page from this list by specifying the `page` layout.
+* Out of the box support for multiple authors (via `_data/authors.yml`)
+* Full author information including: picture, bio, website, twitter, facebook, etc.
+* Tag description(s) and personalised covers (via `_data/tags.yml`)
+* Related posts view at the bottom of each post
+* All Ghost default pages: Author page(s), Tag page(s), About page(s), 404, etc.
+* Pagination (infinite scrolling or standard pagination, i.e. posts across multiple pages)
+* Atom Feeds by [Jekyll-feed](https://github.com/jekyll/jekyll-feed)
+* Toggleable subscribe button (requires an external service)
+* Code Syntax Highlight with [highlight.js](https://highlightjs.org/)
+* Support for Google Analytics tracking
+* Support for Disqus comments (not Ghost standard)
 
 
-### Sticky sidebar content
+## Getting Started
 
-By default Hyde ships with a sidebar that affixes it's content to the bottom of the sidebar. You can optionally disable this by removing the `.sidebar-sticky` class from the sidebar's `.container`. Sidebar content will then normally flow from top to bottom.
+### Deployment
 
-```html
-<!-- Default sidebar -->
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    ...
-  </div>
-</div>
+**Important:**  For security reasons, Github does not allow plugins (under `_plugins/`) when
+deploying with Github Pages. This means that we have to do one of the following:
 
-<!-- Modified sidebar -->
-<div class="sidebar">
-  <div class="container">
-    ...
-  </div>
-</div>
-```
+**1)** generate the site locally (more details below) and push the resulting
+HTML (the contents of `_site/` or `../jasper2-pages/`) to a Github repository, that GitHub Pages
+then host;
 
+**2)** build the site with [travis-ci](https://travis-ci.org/) (with goodies from
+[jekyll-travis](https://github.com/mfenner/jekyll-travis)) automatically pushing the
+generated HTML files to a *gh-pages* branch.
+This later approach is the one I am currently using to generate the live demo.
 
-### Themes
+**3)** deploy the static website with Jekyll-compatible hosters, such as https://www.netlify.com/, that allow for deployment from the Github repo and publish the website using CDNs. Netlify has a free starter offer.
 
-Hyde ships with eight optional themes based on the [base16 color scheme](https://github.com/chriskempson/base16). Apply a theme to change the color scheme (mostly applies to sidebar and links).
+For option **1)** simply clone this repository (*master branch*), and then run
+`bundle exec jekyll serve` inside the directory. Upload the resulting `_site/` (or `../jasper2-pages/`)
+contents to your repository (*master branch* if uploading as your personal page
+(e.g. username.github.io) or *gh-pages branch* if uploading as a project page
+(as for the [demo](https://github.com/jekyller/jasper2/tree/gh-pages)).
 
-![Hyde in red](https://f.cloud.github.com/assets/98681/1831229/42b0b354-7384-11e3-8462-31b8df193fe5.png)
+For option **2)** you will need to set up travis-ci for your personal fork. Briefly all you
+need then is to change your details in *[\_config.yml](_config.yml)* so that you can push
+to your github repo. You will also need to generate a secure key to add to your
+*[.travis.yml](.travis.yml)* (you can find more info on how to do it in that file).
+Also make sure you read the documentation from
+[jekyll-travis](https://github.com/mfenner/jekyll-travis). This approach has clear
+advantages in that you simply push your file changes to GitHub and all the HTML files
+are generated for you and pushed to *gh-pages*. Also you get to know if everything is
+still fine with your site builds. Don't hesitate to contact me if you still have any
+issues (see below about issue tracking).
 
-There are eight themes available at this time.
+### Author Pages
 
-![Hyde theme classes](https://f.cloud.github.com/assets/98681/1817044/e5b0ec06-6f68-11e3-83d7-acd1942797a1.png)
+In order to properly generate author pages you need to rename the field *author* in the
+front matter of every post to match that of your each author's *username* as defined
+in the *[\_data/authors.yml](_data/authors.yml)* file.
+With the latest update, multiple author blogs are now supported out of the box.
 
-To use a theme, add anyone of the available theme classes to the `<body>` element in the `default.html` layout, like so:
+### Compiling Styles
 
-```html
-<body class="theme-base-08">
-  ...
-</body>
-```
+Following on the way Casper styles are compiled as [described here](https://github.com/tryghost/casper#development):
 
-To create your own theme, look to the Themes section of [included CSS file](https://github.com/poole/hyde/blob/master/public/css/hyde.css). Copy any existing theme (they're only a few lines of CSS), rename it, and change the provided colors.
+Jasper2 styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need Node and Gulp installed globally. After that, from the theme's root directory:
 
-### Reverse layout
-
-![Hyde with reverse layout](https://f.cloud.github.com/assets/98681/1831230/42b0d3ac-7384-11e3-8d54-2065afd03f9e.png)
-
-Hyde's page orientation can be reversed with a single class.
-
-```html
-<body class="layout-reverse">
-  ...
-</body>
+```bash
+$ npm install
+$ gulp
 ```
 
+Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
 
-## Development
+## Issues and Contributing
 
-Hyde has two branches, but only one is used for active development.
+This install builds well with Ruby v2.5.1 and Jekyll v3.7.4. If you run into any problems
+please log them on the [issue tracker](https://github.com/jekyller/jasper2/issues).
 
-- `master` for development.  **All pull requests should be submitted against `master`.**
-- `gh-pages` for our hosted site, which includes our analytics tracking code. **Please avoid using this branch.**
+Feel free pull-request your patches and fixes.
 
-
-## Author
-
-**Mark Otto**
-- <https://github.com/mdo>
-- <https://twitter.com/mdo>
+## Thanks
 
 
-## License
+Many thanks to the Ghost team for all the design work. Also many thanks to all contributors,
+that help keeping the project alive and updated :smile:
 
-Open sourced under the [MIT license](LICENSE.md).
 
-<3
+## Copyright & License
+
+Same licence as the one provided by Ghost's team. See Casper's theme [license](GHOST.txt).
+
+Copyright (C) 2015-2018 - Released under the MIT License.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
