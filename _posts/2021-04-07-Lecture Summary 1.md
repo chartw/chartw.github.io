@@ -1,4 +1,13 @@
-# Lecture Summary1
+---
+layout: post
+title: "Lecture Summary 1"
+subtitle: "ML Basics and Neural Networks"
+categories: cs
+tags: ml
+comments: true  
+# header-img: img/review/review-book-organize-thoughts-1.png
+---
+> `AI Application System` 강의 중 week 2~4 내용의 정리입니다.
 
 # Machine Learning Basics
 
@@ -26,9 +35,9 @@ Data Split for ML : Data를 train / validation / test로 구분하여 사용 tra
 
 ### Linear Regression
 
-![Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled.png](Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled.png)
+![/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled.png](/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled.png)
 
-![Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%201.png](Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%201.png)
+![/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%201.png](/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%201.png)
 
 x : Inputs / y : Labels(Ground Truth) / θ : Parameters(weight) / bias : input데이터와 무관한 parameter
 
@@ -46,7 +55,7 @@ Nearest Neighbor : test 데이터를 가장 유사한(거리가 가까운)label�
 
 Distance Metric : 거리를 계산하는 공식(L1, L2)
 
-![Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%202.png](Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%202.png)
+![/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%202.png](/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%202.png)
 
 How fast training and prediction? : Train : O(1) but predict O(N) → BAD
 
@@ -84,7 +93,7 @@ W를 잘 조정하여 정답 클래스의 score를 증가시키는 것(고양이
 
 Random Parameter Update → Feed-foward → Loss Function을 줄이기 위해 Optimization → Update...
 
-![Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%203.png](Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%203.png)
+![/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%203.png](/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%203.png)
 
 32x32x3(3072)이미지 입력, 10개의 클래스 출력일 경우 : f(x,W) = Wx + b(bias)
 
@@ -144,9 +153,9 @@ ex) $f=W_2max(0,W_1x)$ : input - W1 - ReLU  - W2 - output (2-layer Neural Net or
 
 ### Gradient Descent
 
-![Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%204.png](Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%204.png)
+![/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%204.png](/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%204.png)
 
-![Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%205.png](Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%205.png)
+![/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%205.png](/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%205.png)
 
 최선의 Weight W를 구하는 방법
 
@@ -164,9 +173,9 @@ Analytic Gradient : 미분공식을 이용하여 한번에 계산(편미분 하�
 
 복잡한 Loss에 대해 gradient 계산 어려움 → Computational Graph + Backpropagation
 
-![Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%206.png](Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%206.png)
+![/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%206.png](/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%206.png)
 
-![Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%207.png](Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%207.png)
+![/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%207.png](/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%207.png)
 
 Backpropagation : 끝에서부터 앞으로 Chain rule을 통해 모든 Gradient를 얻어낼 수 있음
 
@@ -186,7 +195,7 @@ Regularization loss : training data에 overfitting을 예방 → simpler model(W
 
 $\lambda$ = regularization strength(hyperparameter)
 
-![Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%208.png](Lecture%20Summary1%20ab8147bad5744867814795ddb29cab94/Untitled%208.png)
+![/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%208.png](/assets/img/post_img/2021-04-07-Lecture Summary 1/Untitled%208.png)
 
 # Neural Networks 2
 

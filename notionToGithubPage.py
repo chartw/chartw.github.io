@@ -36,10 +36,14 @@ def FindMarkdownFile():
 def ModifiedMarkDownFile():
 
     #Input Information
-    fileName=input("Title=")
     year=int(input("Year="))
     month=int(input("Month="))
     day=int(input("Day="))
+    fileName=input("Title=")
+    subTitle=input("Subtitle=")
+    cats=input("Categories=")
+    tags=input("Tags=")
+    
 
     currentTimeStr=date(year, month, day).isoformat()
 
@@ -53,8 +57,7 @@ def ModifiedMarkDownFile():
     with open('customFrontMatter.txt','r') as f:
         customFrontMatter=f.read()
 
-    frontMatter='---\ntitle: "{}"\ndate: {} 00:00:00 +0900\n{}\n---\n'.format(fileName,currentTimeStr,customFrontMatter)
-
+    frontMatter='---\nlayout: post\ntitle: "{}"\nsubtitle: "{}"\ncategories: {}\ntags: {}\n{}\n---\n'.format(fileName,subTitle,cats,tags,customFrontMatter)
     #Read Notion Markdown
     notionMarkDownFile=FindMarkdownFile()
     notionMarkDownFolder=notionMarkDownFile.replace('.md','')
@@ -69,11 +72,11 @@ def ModifiedMarkDownFile():
             if line.startswith('!['):
                 path=ExportFilePath(line)
                 break
-        n=n.replace(path,'/assets/images/posts/{}'.format(newfolderName))
+        n=n.replace(path,'/assets/img/post_img/{}'.format(newfolderName))
     
 
     #Write Modified MarkDown
-    newMarkdownFileName="{}-{}.md".format(currentTimeStr,fileName)
+    newMarkdownFileName="_posts/{}-{}.md".format(currentTimeStr,fileName)
     with open(newMarkdownFileName,'w') as f:
         f.write(frontMatter+n)
     
@@ -82,8 +85,8 @@ def ModifiedMarkDownFile():
 
     #Move Resouces file and Remove Folder
     print("SRC:"+os.curdir+'/{}'.format(notionMarkDownFolder))
-    print("DES:"+os.curdir+'/assets/images/posts/{}'.format(newfolderName))
-    shutil.move(os.curdir+'/{}'.format(notionMarkDownFolder),os.curdir+'/assets/images/posts/{}'.format(newfolderName))
+    print("DES:"+os.curdir+'/assets/img/post_img/{}'.format(newfolderName))
+    shutil.move(os.curdir+'/{}'.format(notionMarkDownFolder),os.curdir+'/assets/img/post_img/{}'.format(newfolderName))
    
 
 

@@ -1,13 +1,2 @@
-header:
-    overlay_color: "#000"
-    overlay_filter: "0.5"
-    overlay_image: /assets/images/posts/Untitled.png
-    teaser: /assets/images/posts/Untitled.png
-  
-excerpt: "머신러닝 지도학습 기초(1)"
-
-categories: 
-- Development
-- machineLearning
-tag: 
-- ML
+comments: true  
+# header-img: img/review/review-book-organize-thoughts-1.png

@@ -46,7 +46,7 @@ theorydb:
     # pinterest:       <username>
     # foursquare:      <number>
     # yelp:            <string>
-    github:          theorydb
+    github:          chartw
     # stackoverflow:   <number/username>
     # npm:             <username>
     # hackernews:      <username>
@@ -57,7 +57,7 @@ theorydb:
     # delicious:       <username>
     # stumbleupon:     <username>
     # paypal:          <username>
-    email:           mailto:theorydb@gmail.com
+    email:           mailto:hkduatls@gmail.com
     rss:             https://theorydb.github.io/feed.xml
 
 # Another author
