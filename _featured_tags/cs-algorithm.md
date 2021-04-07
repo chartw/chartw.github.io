@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: ML
-slug: ml
-category: dev
+title: Algorithm
+slug: algorithm
+category: cs
 menu: false
 order: 1
 ---

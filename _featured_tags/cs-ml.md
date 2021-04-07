@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: DL
-slug: dl
-category: dev
+title: ML
+slug: ml
+category: cs
 menu: false
 order: 2
 ---

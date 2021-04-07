@@ -2,21 +2,21 @@
 # Must be the same as `author` in `_config.yml`.
 # Change `qwtel` to your shortname (used in the front matter to set a page's author, e.g. `author: qwtel`).
 theorydb:
-  name:              min
-  email:             theorydb@gmail.com
+  name:              TaeWoong Change
+  email:             hkduatls@gmail.com
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    Data science enthusiast and addict :)
+    평범한 공대생 블로그
 
   # This photo will be used in the about section
   picture:
-    src:             /assets/img/me.jpg
+    src:             /assets/img/profile.png
     # srcset is optional, but can be used to provide higher res versions for retina displays
     srcset:
-      1x:            /assets/img/me.jpg
-      2x:            /assets/img/me.jpg
+      1x:            /assets/img/profile.png
+      2x:            /assets/img/profile.png
 
   # Social media icons in sidebar
   # Comment/uncommet to show/hide
