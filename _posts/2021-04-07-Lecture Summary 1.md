@@ -4,7 +4,8 @@ title: "Lecture Summary 1"
 subtitle: "ML Basics and Neural Networks"
 categories: cs
 tags: ml
-comments: true  
+comments: true
+use_math: true
 # header-img: img/review/review-book-organize-thoughts-1.png
 ---
 > `AI Application System` 강의 중 week 2~4 내용 정리입니다.
@@ -107,6 +108,8 @@ $L={1 \over N}\sum_iL_i(f(x_i,W),y_i)$
 
 $L$ : dataset에 대한 전체 Loss / $L_i$ : Loss function
 
+---
+
 SVM Loss function(Hinge loss)
 
 $L_i=\sum_{j\ne y_i} max(0,w_j^Tx_i-w_{yi}^Tx_i+\Delta)$
@@ -117,17 +120,21 @@ $w_j^Tx_i-w_{yi}^Tx_i+\Delta<0$
 
 즉 correct class score가 other class score보다 최소한 margin만큼 클때 이상적(Loss가 0).
 
+---
+
 Softmax Loss function(cross-entropy loss)
 
-$P(Y=k|X=x_i)={e^sk\over \sum e^{s_j}}$
+$P(Y=k\|X=x_i)={e^sk\over \sum e^{s_j}}$
 
 softmax function : score를 exp and normalize
 
-$L_i=-logP(Y=y_i|X=x_i)$
+$L_i=-logP(Y=y_i\|X=x_i)$
 
 cross-entropy loss : P() = correct class의 nomalize 값.  P() = 1.00 일 때만 Loss=0으로 이상적
 
-SVM vs Softmax
+---
+
+### SVM vs Softmax
 
 SVM : margin 값만 넘기면 Loss = 0이므로 학습종료. 상대적으로 욕심이 적다.
 
