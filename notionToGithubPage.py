@@ -39,7 +39,7 @@ def ModifiedMarkDownFile():
     year=int(input("Year="))
     month=int(input("Month="))
     day=int(input("Day="))
-    fileName=input("Title=")
+    fileName=input("FileName=")
     subTitle=input("Subtitle=")
     cats=input("Categories=")
     tags=input("Tags=")
@@ -57,11 +57,13 @@ def ModifiedMarkDownFile():
     with open('customFrontMatter.txt','r') as f:
         customFrontMatter=f.read()
 
-    frontMatter='---\nlayout: post\ntitle: "{}"\nsubtitle: "{}"\ncategories: {}\ntags: {}\n{}\n---\n'.format(fileName,subTitle,cats,tags,customFrontMatter)
+    
     #Read Notion Markdown
     notionMarkDownFile=FindMarkdownFile()
     notionMarkDownFolder=notionMarkDownFile.replace('.md','')
 
+    titlesw=0
+    fileName="{}-{}-{}".format(cats,tags,fileName)
     newfolderName="{}-{}".format(currentTimeStr,fileName)
     with open(notionMarkDownFile,'r') as f:
         
@@ -69,15 +71,21 @@ def ModifiedMarkDownFile():
         lines=n.split('\n')
         path=''
         for line in lines:
+            if line.startswith('# ') and titlesw == 0:
+                path=line.replace('# ','')
+                title=path
+                n=n.replace(line,'')
+                titlesw=1
             if line.startswith('!['):
                 path=ExportFilePath(line)
                 break
         n=n.replace(path,'/assets/img/post_img/{}'.format(newfolderName))
     
+    frontMatter='---\nlayout: post\ntitle: "{}"\nsubtitle: "{}"\ncategories: {}\ntags: {}\n{}\n---\n'.format(title,subTitle,cats,tags,customFrontMatter)
 
     #Write Modified MarkDown
-    newMarkdownFileName="_posts/{}-{}.md".format(currentTimeStr,fileName)
-    with open(newMarkdownFileName,'w') as f:
+    newMarkdowntitle="_posts/{}.md".format(newfolderName)
+    with open(newMarkdowntitle,'w') as f:
         f.write(frontMatter+n)
     
     #Remove md file

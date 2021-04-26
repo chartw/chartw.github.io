@@ -7,7 +7,7 @@ tags: ml
 comments: true  
 # header-img: img/review/review-book-organize-thoughts-1.png
 ---
-> `AI Application System` 강의 중 week 2~4 내용의 정리입니다.
+> `AI Application System` 강의 중 week 2~4 내용 정리입니다.
 
 # Machine Learning Basics
 
